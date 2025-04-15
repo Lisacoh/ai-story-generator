@@ -13,8 +13,8 @@ import streamlit as st
 import openai
 import os
 
-# Load OpenAI API key securely from environment variable
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# Securely load your API key
+client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 st.set_page_config(page_title="AI Story Generator", page_icon="📚")
 st.title("📖 AI-Powered Story Generator")
@@ -37,9 +37,11 @@ End the story with a short message or reflection.
 Story:
 """
             try:
-                response = openai.ChatCompletion.create(
+                response = client.chat.completions.create(
                     model="gpt-4",
-                    messages=[{"role": "user", "content": prompt}],
+                    messages=[
+                        {"role": "user", "content": prompt}
+                    ],
                     temperature=0.8,
                     max_tokens=300
                 )
@@ -48,3 +50,4 @@ Story:
                 st.markdown(story)
             except Exception as e:
                 st.error(f"Something went wrong: {e}")
+
