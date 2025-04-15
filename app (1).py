@@ -13,15 +13,18 @@ import streamlit as st
 import openai
 import os
 
-# Securely load your API key
-client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Set the OpenAI API key
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
+# Streamlit UI
 st.set_page_config(page_title="AI Story Generator", page_icon="📚")
 st.title("📖 AI-Powered Story Generator")
 st.subheader("Create short educational stories for kids aged 11–13")
 
+# Topic input
 theme = st.text_input("Enter a topic (e.g. gravity, empathy, ancient Egypt):")
 
+# Generate button
 if st.button("Generate Story"):
     if theme.strip() == "":
         st.warning("Please enter a topic before generating.")
@@ -37,7 +40,7 @@ End the story with a short message or reflection.
 Story:
 """
             try:
-                response = client.chat.completions.create(
+                response = openai.chat.completions.create(
                     model="gpt-4",
                     messages=[
                         {"role": "user", "content": prompt}
@@ -49,5 +52,4 @@ Story:
                 st.markdown("### ✨ Your Story")
                 st.markdown(story)
             except Exception as e:
-                st.error(f"Something went wrong: {e}")
-
+                st.error("Something went wrong.")
