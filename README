@@ -1,0 +1,38 @@
+# 📖 AI-Powered Story Generator
+
+This is a web application built with Streamlit and OpenAI’s GPT model to generate **short educational stories** for kids aged 11–13.
+
+---
+
+## 💡 Project Description
+
+The goal of this app is to help children learn new concepts through **fun, short stories**.  
+The user enters a topic (e.g., gravity, empathy, ancient Egypt), and the app generates a story using GPT-3.5-turbo or GPT-4 (if available).
+
+---
+
+## 🛠️ Technologies Used
+
+- **Python**
+- **Streamlit** (for the web interface)
+- **OpenAI API** (for story generation)
+
+---
+
+## 🚀 How It Works
+
+1. The user types in a topic.
+2. A prompt is sent to OpenAI’s API.
+3. The AI generates a 5–7 sentence story adapted to 11–13-year-olds.
+4. The story is displayed on the page.
+
+---
+
+## 🔐 Environment Variables
+
+To run this app, you need an OpenAI API key.
+
+Create a file called `.streamlit/secrets.toml` or set it in Streamlit Cloud like this:
+
+```toml
+OPENAI_API_KEY="sk-..."
