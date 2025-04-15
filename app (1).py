@@ -41,13 +41,13 @@ Story:
 """
             try:
                 response = openai.chat.completions.create(
-                    model="gpt-4",
+                    model="gpt-3.5-turbo",  # ✅ Remplace gpt-4 par gpt-3.5-turbo ici
                     messages=[
                         {"role": "user", "content": prompt}
                     ],
                     temperature=0.8,
                     max_tokens=300
-                )
+                ))
                 story = response.choices[0].message.content.strip()
                 st.markdown("### ✨ Your Story")
                 st.markdown(story)
