@@ -47,7 +47,7 @@ Story:
                     ],
                     temperature=0.8,
                     max_tokens=300
-                ))
+                )
                 story = response.choices[0].message.content.strip()
                 st.markdown("### ✨ Your Story")
                 st.markdown(story)
