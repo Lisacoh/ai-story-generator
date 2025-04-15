@@ -52,4 +52,5 @@ Story:
                 st.markdown("### ✨ Your Story")
                 st.markdown(story)
             except Exception as e:
-                st.error("Something went wrong.")
+                st.error(f"Something went wrong: {e}")
+
